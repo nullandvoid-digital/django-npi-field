@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "django-npi-field"
+version = "0.1.0"
+description = "Creates a Django field for National Provider Identifier numbers w/ Custom Domains in PostgreSQL"
+authors = ["Kyle Jensen <kyle@nullandvoid.digital>"]
+readme = "README.rst"
+keywords = ["django"]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Intended Audience :: Developers",
+    "Topic :: Internet :: WWW/HTTP"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
