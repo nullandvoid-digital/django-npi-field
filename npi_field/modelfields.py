@@ -1,5 +1,5 @@
 from django.db.models import CharField
-from validators import npi_validator
+from .validators import npi_validator
 from django.utils.translation import gettext_lazy as _
 
 
@@ -23,3 +23,12 @@ class NPIField(CharField):
         name, path, args, kwargs = super().deconstruct()
         del kwargs["max_length"]
         return name, path, args, kwargs
+
+    def formfield(self, **kwargs):
+        defaults = {
+            "min_length": 10,
+            "max_length": 10,
+            "validators": [npi_validator]
+        }
+        defaults.update(kwargs)
+        return super(NPIField, self).formfield(**defaults)
