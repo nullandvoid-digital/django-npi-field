@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Creates a Django field for National Provider Identifier numbers w/ Custom Domains in PostgreSQL"
 authors = ["Kyle Jensen <kyle@nullandvoid.digital>"]
 readme = "README.rst"
+license = "MIT"
 keywords = ["django"]
 classifiers = [
     "Environment :: Web Environment",
@@ -15,10 +16,14 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Internet :: WWW/HTTP"
 ]
+packages = [
+    { include = "npi_field"}
+]
+include = ["tests"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-django = "^3.2"
+python = "^3.12"
+django = "^5.0.6"
 
 
 [build-system]
