@@ -9,5 +9,5 @@ class TestNPIModel(models.Model):
 
 
 class TestPKModel(models.Model):
-    npi = NPIField(unique=True)
-    name = models.CharField(max_length=10)
+    npi = NPIField(unique=True, primary_key=True)
+    name = models.CharField(max_length=100)
