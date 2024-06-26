@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "django-npi-field"
-version = "0.1.2"
+version = "0.1.3"
 description = "Creates a Django field for U.S. National Provider Identifier numbers"
 authors = ["Kyle Jensen <kyle@nullandvoid.digital>"]
+repository = "https://github.com/nullandvoid-digital/django-npi-field"
 readme = "README.rst"
 license = "MIT"
 keywords = ["django"]
@@ -17,10 +18,8 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP"
 ]
 packages = [
-    { include = "npi_field"}
-]
-include = [
-    { path = "tests", format = ["sdist", "wheel"] }
+    { include = "npi_field" },
+    { include = "tests/*", to = "npi_field", format = ["sdist"] }
 ]
 
 [tool.poetry.dependencies]
