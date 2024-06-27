@@ -15,7 +15,8 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: Implementation :: CPython",
     "Intended Audience :: Developers",
-    "Topic :: Internet :: WWW/HTTP"
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content"
 ]
 packages = [
     { include = "npi_field" },
