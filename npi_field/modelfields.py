@@ -1,9 +1,14 @@
 from django.db.models import CharField
 from .validators import npi_validator
 from django.utils.translation import gettext_lazy as _
+import formfields
 
 
 class NPIField(CharField):
+    default_validators = [npi_validator]
+    default_error_messages = {
+        "invalid": _("Input must be a valid NPI number"),
+    }
 
     description = _("National Provider Identifier(NPI) number")
 
@@ -26,9 +31,8 @@ class NPIField(CharField):
 
     def formfield(self, **kwargs):
         defaults = {
-            "min_length": 10,
-            "max_length": 10,
-            "validators": [npi_validator]
+            "form_class": formfields.NPIField,
+            "error_messages": "",
         }
         defaults.update(kwargs)
         return super(NPIField, self).formfield(**defaults)
