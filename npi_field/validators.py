@@ -6,7 +6,7 @@ import argparse
 def npi_validator(npi):
     """Validate NPI code against Luhn algorithm and raise ValidationError if invalid."""
     if not npi.isdigit() or len(npi) != 10:
-        raise ValidationError(_("NPI must be a 10-digit number"))
+        raise ValidationError(_("NPI must be a 10-digit number"), code="invalid")
 
     nums = [8, 0, 8, 4, 0]
     nums += [int(num) for num in str(npi)]
