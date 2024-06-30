@@ -4,7 +4,7 @@ from django.forms.widgets import TextInput
 class NPIWidget(TextInput):
     input_type = "text"
 
-    def __init__(self, attrs=None, is_required=True):
+    def __init__(self, is_required, attrs=None):
         self.attrs = {
             "pattern": r"\d{10}",
             "maxlength": 10,
