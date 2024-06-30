@@ -14,15 +14,12 @@ class NPIField(CharField):
     help_text = _(
         "Please enter the provider's or facility's National Provider Identifier number"
     )
-    initial = "1710291802"
 
     def __init__(self, *args, **kwargs):
         self.max_length = 10
         self.min_length = 10
         super().__init__(*args, **kwargs)
-        self.validators = (*self.default_validators,)
-        self.default_error_messages = self.error_messages
-        self.widget.is_required = self.required
+        self.error_messages |= self.default_error_messages
 
     def clean(self, value):
         value = self.to_python(value)

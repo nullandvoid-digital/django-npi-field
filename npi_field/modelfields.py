@@ -2,10 +2,11 @@ from django.db.models import CharField
 from npi_field.validators import npi_validator
 from django.utils.translation import gettext_lazy as _
 from npi_field import formfields
+from django.core.validators import MinLengthValidator
 
 
 class NPIField(CharField):
-    default_validators = [npi_validator]
+    default_validators = [npi_validator, MinLengthValidator(10)]
 
     description = _("National Provider Identifier(NPI) number")
 

@@ -5,6 +5,7 @@ class NPIWidget(TextInput):
     input_type = "text"
 
     def __init__(self, is_required, attrs=None):
+        self.is_required = is_required
         self.attrs = {
             "pattern": r"\d{10}",
             "maxlength": 10,
@@ -12,5 +13,4 @@ class NPIWidget(TextInput):
             "title": "A 10-digit NPI number",
             "required": self.is_required,
         }
-        self.is_required = is_required
         super().__init__(attrs)
