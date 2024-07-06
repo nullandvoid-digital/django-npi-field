@@ -31,7 +31,7 @@ class TestNPIValidator(SimpleTestCase):
             self.assertRaises(ValidationError, npi_validator, num)
 
 
-class TestNPIField(TestCase):
+class TestModelField(TestCase):
 
     @classmethod
     def setUpTestData(cls):
@@ -55,3 +55,7 @@ class TestNPIField(TestCase):
         TestNPIModel.objects.create(npi="", name="Ken Masters")
         row = TestNPIModel.objects.get(npi="")
         self.assertEqual(row.name, "Ken Masters")
+
+
+class TestFormField(TestCase):
+    pass

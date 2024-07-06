@@ -8,8 +8,6 @@ class NPIWidget(TextInput):
         self.is_required = is_required
         self.attrs = {
             "pattern": r"\d{10}",
-            "maxlength": 10,
-            "minlength": 10,
             "title": "A 10-digit NPI number",
             "required": self.is_required,
         }
