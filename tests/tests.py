@@ -1,6 +1,6 @@
 from django.test import TestCase, SimpleTestCase
 from npi_field.validators import npi_validator
-from test_models import TestPKModel, TestNPIModel
+from .test_models import TestPKModel, TestNPIModel
 from django.core.exceptions import ValidationError
 
 valid = {
