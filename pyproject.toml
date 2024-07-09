@@ -25,13 +25,13 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 django = ">=4.0"
+sphinx-rtd-theme = "^2.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
 pygments = "^2.18.0"
-
-[tool.poetry.group.tests.dependencies]
 tox = "^4.16.0"
+sphinx = "7.1.2"
 
 [build-system]
 requires = ["poetry-core"]

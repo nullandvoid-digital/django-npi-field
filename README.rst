@@ -4,7 +4,8 @@ django-npi-field
 
 Description
 ===========
-A Django library which validates and stores 10-digit U.S. `National Provider Identifier (NPI)`_ numbers.
+**Django-npi-field** is a Django library which validates and stores 10-digit U.S. `National Provider Identifier (NPI)`_
+numbers.
 
 .. _`National Provider Identifier (NPI)`: \
    https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand
@@ -67,14 +68,14 @@ make sure to also set the ``max_length`` argument.
 
 Implementation
 ==============
-The NPI number is validated by a Luhn algorithm [1]_ implementation and stored in a standard CharField. This
+A Luhn algorithm [1]_ implementation validates the NPI number and stores in a standard CharField. This
 CharField is automatically restricted to a ``max_length`` of 10 characters to maintain consistency with the NPI
 specification.
 
 Currently, this validation is the only thing restricting the input. In the future, this library will have special
-integration with PostgreSQL's Custom Domains to do validation in-database, though the plan is for checks to keep the
+integration with PostgreSQL's Custom Domains to do validation in-database. Ideally, there will be checks to keep the
 library database agnostic.
 
 .. [1] **NOTE:** This is a Luhn algorithm specially implemented for NPI numbers due to it's shorter length. This \
-       validator **WILL NOT WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
+       validator **WON'T WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
        numbers, ISBN numbers, or IMEI numbers.
