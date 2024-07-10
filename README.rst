@@ -1,6 +1,6 @@
-================
+################
 django-npi-field
-================
+################
 
 Description
 ===========
@@ -77,5 +77,5 @@ integration with PostgreSQL's Custom Domains to do validation in-database. Ideal
 library database agnostic.
 
 .. [1] **NOTE:** This is a Luhn algorithm specially implemented for NPI numbers due to it's shorter length. This \
-       validator **WON'T WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
-       numbers, ISBN numbers, or IMEI numbers.
+   validator **WON'T WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
+   numbers, ISBN numbers, or IMEI numbers.
