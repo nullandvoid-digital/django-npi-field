@@ -109,9 +109,9 @@ class TestFormField(TestCase):
 
     def test_not_pk_data_is_not_valid(self):
         for npi, name in invalid.items():
+            data = {"npi": npi, "name": name}
+            form = TestNPIForm(data)
             if not npi:
-                pass
+                self.assertTrue(form.is_valid())
             else:
-                data = {"npi": npi, "name": name}
-                form = TestNPIForm(data)
                 self.assertFalse(form.is_valid())
