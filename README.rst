@@ -5,7 +5,7 @@ django-npi-field
 Description
 ===========
 **Django-npi-field** is a Django library which validates and stores 10-digit U.S. `National Provider Identifier (NPI)`_
-numbers.
+numbers using a custom Luhn algorithm. [1]_
 
 .. _`National Provider Identifier (NPI)`: \
    https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand
@@ -36,6 +36,8 @@ Using poetry:
 
 Usage
 =====
+Setup
+-----
 Add the app to ``INSTALLED_APPS`` in your ``settings.py`` file.
 
 .. code-block:: python
@@ -45,6 +47,8 @@ Add the app to ``INSTALLED_APPS`` in your ``settings.py`` file.
        "npi_field",
    ]
 
+Adding the model field
+----------------------
 Add the field to your ``models.py``.
 
 .. code-block:: python
@@ -55,8 +59,24 @@ Add the field to your ``models.py``.
    class HealthcareProvider(models.Model):
        npi = NPIField()
 
-If you prefer, you can also call the validator directly and bypass the model field. If you want the length restriction,
-make sure to also set the ``max_length`` argument.
+Using the form field
+--------------------
+In a default ``ModelForm``, the package's custom form field with its length restrictions is automatically used. You can
+add it to a normal form as follows:
+
+.. code-block:: python
+
+   from django import forms
+   from npi_field.formfields import NPIField
+
+   class NPIForm(forms.Form):
+       npi = NPIField()
+
+Calling the validator directly
+------------------------------
+If you prefer, you can also call the validator directly. If you want the length restriction in the model field, make
+sure to also set the ``max_length`` argument. This won't affect the validator, as it checks that the value is 10
+characters long before running the algorithm.
 
 .. code-block:: python
 
@@ -66,16 +86,6 @@ make sure to also set the ``max_length`` argument.
    class HealthcareProvider(models.Model):
        npi = models.CharField(max_length=10, validators = [npi_validator])
 
-Implementation
-==============
-A Luhn algorithm [1]_ implementation validates the NPI number and stores in a standard CharField. This
-CharField is automatically restricted to a ``max_length`` of 10 characters to maintain consistency with the NPI
-specification.
-
-Currently, this validation is the only thing restricting the input. In the future, this library will have special
-integration with PostgreSQL's Custom Domains to do validation in-database. Ideally, there will be checks to keep the
-library database agnostic.
-
 .. [1] **NOTE:** This is a Luhn algorithm specially implemented for NPI numbers due to it's shorter length. This \
-   validator **WON'T WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
+   library **WON'T WORK** for other numbers validated by a Luhn algorithm, such as credit/debit card \
    numbers, ISBN numbers, or IMEI numbers.

@@ -1,7 +1,7 @@
 from django.db.models import CharField
 from npi_field.validators import npi_validator
 from django.utils.translation import gettext_lazy as _
-from npi_field import formfields
+from npi_field.formfields import NPIField
 from django.core.validators import MinLengthValidator
 
 
@@ -30,7 +30,7 @@ class NPIField(CharField):
     def formfield(self, **kwargs):
         return super(NPIField, self).formfield(
             **{
-                "form_class": formfields.NPIField,
+                "form_class": NPIField,
                 "error_messages": "",
                 **kwargs,
             }
