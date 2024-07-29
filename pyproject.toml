@@ -25,14 +25,16 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 django = ">=4.0"
-groundwork-sphinx-theme = "^1.1.1"
 
+[tool.poetry.group.dev]
+optional = true
 
 [tool.poetry.group.dev.dependencies]
 pygments = "^2.18.0"
 tox = "^4.16.0"
 sphinx = "7.1.2"
 blacken-docs = "^1.18.0"
+groundwork-sphinx-theme = "^1.1.1"
 
 [build-system]
 requires = ["poetry-core"]
